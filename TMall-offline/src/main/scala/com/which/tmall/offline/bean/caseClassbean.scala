@@ -24,6 +24,15 @@ case class Condition(var startDate: String,
                      var categoryIds: String,
                      var targetPageFlow: String
                     )
+
+/**
+  *
+  * @param taskId
+  * @param categoryId
+  * @param clickCount
+  * @param orderCount
+  * @param payCount
+  */
 case class CategoryCountInfo(
                             taskId:String,
                             categoryId:String,
@@ -32,6 +41,13 @@ case class CategoryCountInfo(
                             payCount:Long
                             )
 
+/**
+  *
+  * @param taskId
+  * @param categoryId
+  * @param sessionId
+  * @param clickCount
+  */
 case class SeeionCountInfo(
                             taskId: String,
                             categoryId: String,
