@@ -14,6 +14,7 @@ object RealTimeApp {
     val conf = new SparkConf()
       .setAppName("RealTimeApp")
       .setMaster("local[*]")
+      .setExecutorEnv("executor-cores ","1")
     val sc = new SparkContext(conf)
     val ssc = new StreamingContext(sc,Seconds(1))
     val recordStream = MyKafkaUtil.getDstream(ssc,"ads_log")

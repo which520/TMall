@@ -11,9 +11,9 @@ import org.json4s.jackson.JsonMethods
 
 object LastHourAdsClickApp {
   def getLastHourClickApp(filterDstream:DStream[AdsInfo],sc: SparkContext) ={
-    sc.setCheckpointDir("hdfs://hadoopSlaver-202:9000/checkpoint2")
+    sc.setCheckpointDir("hdfs://hadoopMaster-201:9000/checkpoint2")
     //filterDstream.cache()
-    val windowStreamAdsInfo = filterDstream.window(Minutes(60),Seconds(10))
+    val windowStreamAdsInfo = filterDstream.window(Minutes(60),Seconds(20))
     val result1 = windowStreamAdsInfo.map(info => {
       val dateFormat = new SimpleDateFormat("HH:mm")
       ((info.adid, dateFormat.format(info.timestamp)), 1)
